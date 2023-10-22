@@ -1,0 +1,58 @@
+.npc-form {
+    margin-bottom: 5px;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+}
+
+.npc-form-filters {
+    display: flex;
+    margin-bottom: 7px;
+}
+
+.npc-filter {
+    margin: 0 5px 5px 0;
+}
+
+.npc-filter label {
+    margin-right: 5px;
+}
+
+#generation-button {
+    width: 100%;
+}
+
+.npc-display {
+    display: flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    padding: 5px;
+}
+
+.npc-field-row {
+    display: flex;
+    margin: 0;
+    text-align: left;
+    border-bottom: 1px dashed grey;
+}
+
+.npc-field-name {
+    text-align: left;
+    width: 20%;
+}
+
+.npc-field-val {
+    text-align: right;
+    margin-left: 10px;
+    width: 80%;
+}
+
+@media (max-width: 600px) {
+    .npc-form {
+        flex-direction: column;
+    }
+    .goonr-container {
+        width: 100%;
+        border: 0;
+        border-bottom: 2px solid black;
+    }
+}
