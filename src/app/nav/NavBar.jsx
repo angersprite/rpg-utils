@@ -17,7 +17,7 @@ export default function NavBar(props) {
         <header>
             <nav className="nav-bar">
                 <div className="nav-container">
-                    <div className="nav-title">Kate's RPG Utilities</div>
+                    <div className="nav-title">Kate&apos;s RPG Utilities</div>
                     <button onClick={() => {toggleMenu(!isMenuOpen)}} className="burger-menu">☰</button>
                 </div>
 
