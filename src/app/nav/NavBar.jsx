@@ -1,3 +1,5 @@
+"use client"
+
 import './NavBar.css'
 import Link from 'next/link'
 
@@ -5,17 +7,18 @@ let isMenuOpen = false
 const navLinks = [
     {id:"npcLink", label:"NPCs", route:"/npc"},
     {id:"initLink", label:"Initiative", route:"/init"},
+    {id:"dungLink", label:"Dungeon", route:"/dungeon"},
+    {id:"loginLink", label:"Login", route:"/profile"},
 ]
 
 // convert this to .ts to type safe the link objects?
 export default function NavBar(props) {
-    
     return (
         <header>
             <nav className="nav-bar">
                 <div className="nav-container">
                     <div className="nav-title">Kate's RPG Utilities</div>
-                    <button /* onClick={() => {toggleMenu(!isMenuOpen)}} */ className="burger-menu">☰</button>
+                    <button onClick={() => {toggleMenu(!isMenuOpen)}} className="burger-menu">☰</button>
                 </div>
 
                 <div className="nav-link-container">
@@ -32,7 +35,7 @@ export default function NavBar(props) {
 
 function renderLink(linkObj) {
     return (
-        <Link id={linkObj.id} key={linkObj.id} className="nav-link" /* onClick={() => {handleClickLink(linkObj.id)}} */ href={linkObj.route}>{linkObj.label}</Link>
+        <Link id={linkObj.id} key={linkObj.id} className="nav-link" onClick={() => {handleClickLink(linkObj.id)}} href={linkObj.route}>{linkObj.label}</Link>
     )
 }
 
