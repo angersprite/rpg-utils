@@ -1,15 +1,12 @@
-import { useState, useEffect } from 'react'
-
 class GoonrService {
-    private apiURL = 'https://goonr-api.onrender.com'
-    
     public async getClasses(id: number) {
-        let classes = this.getAPI('classes')
+        let classes = await this.getAPI('npc-generator/class')
+
         return classes
     }
 
     public async getRaces(id: number) {
-        let races = this.getAPI('races')
+        let races = await this.getAPI('npc-generator/race')
         return races
     }
 
@@ -18,18 +15,17 @@ class GoonrService {
             classID: classID,
             raceID: raceID
         })
-        let npc = this.postAPI('npc', postBody)
+        let npc = this.postAPI('npc-generator/npc', postBody)
         return npc
     }
 
     private async postAPI(endpoint: string, postBody: string) {
-        const response = await fetch(`${this.apiURL}/${endpoint}`, {
+        const response = await fetch(`/api/${endpoint}`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            mode: 'cors',
             body: postBody
         })
         
@@ -37,7 +33,7 @@ class GoonrService {
     }
 
     private async getAPI(endpoint: string) {
-        return fetch(`${this.apiURL}/${endpoint}`, {mode: 'cors'})
+        return fetch(`/api/${endpoint}`)
     }
 }
 

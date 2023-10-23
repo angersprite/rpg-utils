@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 main {
@@ -8,6 +9,11 @@ main {
   justify-content: center;
   margin: auto;
   padding: 10px 0 0 0;
+}
+
+a {
+  color: rgb(56, 37, 48);
+  text-decoration: none;
 }
 
 .form-container {
@@ -22,6 +28,34 @@ main {
 
 .form-container h2 {
   margin: 0;
+}
+
+.vert-label-field {
+  display: flex;
+  flex-direction:column;
+}
+
+.vert-label-field input {
+  width: auto;
+}
+
+.input-helper-text {
+  color: red;
+  margin: 0;
+}
+
+button {
+  padding: 5px;
+  background-color: rgb(56, 37, 48);
+  color: white;
+  border-radius: .2em;
+  border: 0;
+  cursor: pointer;
+}
+
+button.big-button {
+  padding: 1em;
+  width: 100%;
 }
 
 @media screen and (min-width: 601px) {
