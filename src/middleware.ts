@@ -1,6 +1,6 @@
 export {default } from "next-auth/middleware"
 
 export const config = { matcher: [
-    "/profile",
-    "/notes"
+    "/auth/profile",
+    "/init"
 ] }

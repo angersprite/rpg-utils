@@ -1,13 +1,9 @@
 import type { NextAuthOptions } from 'next-auth'
-import GitHubProvider from 'next-auth/providers/github'
 import CredentialsProvider from 'next-auth/providers/credentials'
+import * as authService from './authService.js'
 
 export const options: NextAuthOptions = {
     providers: [
-        GitHubProvider({
-            clientId: process.env.GITHUB_ID as string,
-            clientSecret: process.env.GITHUB_SECRET as string
-        }),
         CredentialsProvider({
             name: "Credentials",
             credentials: {
@@ -23,15 +19,13 @@ export const options: NextAuthOptions = {
             async authorize(credentials) {
                 // placeholder for user credentials retrieval
                 // replace with supabase User table query
-                const user = { id: "1", name: "yushis", password: "password1"}
-                if (credentials?.username === user.name && credentials?.password === user.password) {
-                    return user
-                } else { return null }
+                var user = await authService.checkCredentials(credentials?.username, credentials?.password)
+                return user
             }
         })
     ],
-    pages: {
+    /* pages: {
         signIn: '/auth/login',
-    },
+    }, */
     secret: process.env.NEXT_PUBLIC_SECRET,
 }

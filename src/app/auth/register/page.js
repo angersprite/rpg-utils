@@ -1,8 +1,10 @@
 "use client"
 import { useState}  from 'react'
 import UserService from '../UserService'
+import { useRouter } from 'next/navigation'
 
 export default function Register(props) {
+    const router = useRouter()
     const userService = new UserService()
     const [state, setState] = useState({
         email: '',
@@ -87,10 +89,11 @@ export default function Register(props) {
         let pwCheck = isPasswordValid()
         let pwConfirmCheck = isPasswordConfirmed()
 
+        console.log(emailCheck, usernameCheck, pwCheck, pwConfirmCheck)
         if (emailCheck && usernameCheck && pwCheck && pwConfirmCheck) {
             let isRegistered = userService.registerUser(state.email, state.userName, state.password)
             if (isRegistered) {
-                // navigate to '/registered'
+                router.push('../registered')
             }
             else {
                 // handle error + display message
