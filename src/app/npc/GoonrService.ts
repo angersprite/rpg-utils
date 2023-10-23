@@ -1,12 +1,15 @@
 class GoonrService {
     public async getClasses(id: number) {
-        let classes = await this.getAPI('npc-generator/class')
-
+        let endPoint = id ? `npc-generator/class/${id}` : 'npc-generator/class'
+        let classes = await this.getAPI(endPoint)
+            .then(function(response) { return response.json() })
         return classes
     }
 
     public async getRaces(id: number) {
-        let races = await this.getAPI('npc-generator/race')
+        const endPoint = id ? `npc-generator/race/${id}` : 'npc-generator/race'
+        let races = await this.getAPI(endPoint)
+            .then(function(response) { return response.json() })
         return races
     }
 
@@ -15,7 +18,8 @@ class GoonrService {
             classID: classID,
             raceID: raceID
         })
-        let npc = this.postAPI('npc-generator/npc', postBody)
+        let npc = await this.postAPI('npc-generator/npc', postBody)
+            .then(function(response) { return response.json() })
         return npc
     }
 
@@ -33,7 +37,9 @@ class GoonrService {
     }
 
     private async getAPI(endpoint: string) {
-        return fetch(`/api/${endpoint}`)
+        const response = await fetch(`/api/${endpoint}`)
+        
+        return response
     }
 }
 

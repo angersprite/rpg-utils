@@ -1,6 +1,7 @@
 import { getClass } from '../npcService.js'
+import { NextResponse } from 'next/server'
 
 export async function GET (request){
     let Class = await getClass()
-    return new Response(Class)
+    return NextResponse.json(Class)
 } 

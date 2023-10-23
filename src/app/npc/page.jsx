@@ -15,19 +15,17 @@ export default function NPCBuilder() {
     const [allRaces, setRaces] = useState([]);
     const [ raceId, setRaceID ] = useState(-1)
     const [ classId, setClassID ] = useState(-1)
-
+    
     useEffect(() => {
         goonrService.getClasses()
-          .then((response) => response.json())
           .then((data) => {
-             setClasses(data);
+            setClasses(data);
           })
           .catch((err) => {});
     }, []);
 
     useEffect(() => {
         goonrService.getRaces()
-          .then((response) => response.json())
           .then((data) => {
             setRaces(data);
           })
@@ -36,7 +34,6 @@ export default function NPCBuilder() {
 
     const generateNPC = async () => {
         let npcAPIResponse = goonrService.getNPC(classId, raceId)
-            .then((response) => response.json())
             .then((data) => {
                 setNPC(new NPC(
                     data.className,

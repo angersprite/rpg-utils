@@ -1,6 +1,7 @@
 import { getRace } from '../../npcService.js'
+import { NextResponse } from 'next/server'
 
 export async function GET (request, context){
     let Race = await getRace(context.params.raceID)
-    return new Response(Race)
+    return NextResponse.json(Race)
 } 
