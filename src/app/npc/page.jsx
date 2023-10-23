@@ -33,7 +33,7 @@ export default function NPCBuilder() {
     }, []);
 
     const generateNPC = async () => {
-        let npcAPIResponse = goonrService.getNPC(classId, raceId)
+        goonrService.getNPC(classId, raceId)
             .then((data) => {
                 setNPC(new NPC(
                     data.className,

@@ -89,7 +89,7 @@ export default function Register(props) {
         let pwCheck = isPasswordValid()
         let pwConfirmCheck = isPasswordConfirmed()
 
-        console.log(emailCheck, usernameCheck, pwCheck, pwConfirmCheck)
+        //console.log(emailCheck, usernameCheck, pwCheck, pwConfirmCheck)
         if (emailCheck && usernameCheck && pwCheck && pwConfirmCheck) {
             let isRegistered = userService.registerUser(state.email, state.userName, state.password)
             if (isRegistered) {

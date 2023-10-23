@@ -1,8 +1,14 @@
+"use client"
 import Link from 'next/link'
 import { providers, signIn, getSession, csrfToken } from "next-auth/react";
 
 export default function login() {
     let loginMessage = ''
+    
+    const tryLogin = () => {
+        
+    }
+
     return (
         <div className="form-container">
             <form>

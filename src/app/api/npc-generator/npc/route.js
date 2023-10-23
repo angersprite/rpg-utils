@@ -2,6 +2,7 @@ import generateNPC from '../npcGenerator.js'
 import { NextResponse } from 'next/server'
 
 export async function POST (request){
-    let NPC = await generateNPC(request.body.classID, request.body.raceID)
+    const data = await request.json()
+    let NPC = await generateNPC(data.classID, data.raceID)
     return NextResponse.json(NPC)
 }

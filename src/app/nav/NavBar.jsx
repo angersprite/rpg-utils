@@ -11,11 +11,11 @@ export default async function NavBar(props) {
         {id:"loginLink", label:"Login", route:"/auth/login"},
     ]
     const session = await getSession()
-    if (session) {
+    /* if (session) {
         console.log('yes')
     } else {
         console.log('no')
-    }
+    } */
 
     return (
         <header>
