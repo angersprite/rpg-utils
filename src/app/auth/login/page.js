@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { cookies } from 'next/headers'
 
-export default async function signin() {
+export default async function login() {
     const csrf = cookies().get('next-auth.csrf-token')?.value.split('|')[0]
     
     return (

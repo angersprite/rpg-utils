@@ -14,7 +14,7 @@ export default async function NavBar(props) {
     const profileLink = {id:"profileLink", label:"Profile", route:"/auth/profile"}
     
     await getServerSession()
-        .then(session => (session) ? navLinks.push(profileLink, logoutLink)
+        .then(session => (session) ? navLinks.push(profileLink)
             : navLinks.push(loginLink))
     return (
         <header>
