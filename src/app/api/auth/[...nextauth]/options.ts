@@ -3,6 +3,34 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import * as authService from './authService'
 
 export const options: NextAuthOptions = {
+    cookies: {
+        sessionToken: {
+          name: `next-auth.session-token`,
+          options: {
+            httpOnly: true,
+            sameSite: 'lax',
+            path: '/',
+            secure: true
+          }
+        },
+        callbackUrl: {
+          name: `next-auth.callback-url`,
+          options: {
+            sameSite: 'lax',
+            path: '/',
+            secure: true
+          }
+        },
+        csrfToken: {
+          name: `next-auth.csrf-token`,
+          options: {
+            httpOnly: true,
+            sameSite: 'lax',
+            path: '/',
+            secure: true
+          }
+        },
+    },
     providers: [
         CredentialsProvider({
             name: "Credentials",
