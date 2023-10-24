@@ -3,7 +3,7 @@ import { cookies } from 'next/headers'
 
 export default async function signin() {
     const csrf = cookies().get('next-auth.csrf-token')?.value.split('|')[0]
-    const cerdURL = `${process.env.NEXTAUTH_URL}/api/auth/callback/credentials`
+    const cerdURL = `/api/auth/callback/credentials`
     return (
         <div className="form-container">
             <form method="POST" action={cerdURL}>

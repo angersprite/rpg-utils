@@ -5,7 +5,7 @@ export default async function logout() {
   
     return (
       <div className="form-container">
-        <form action="./api/auth/signout" method="POST">
+        <form action="/api/auth/signout" method="POST">
           <input type="hidden" name="csrfToken" value={csrf} />
           <button className="big-button" id="submitButton" type="submit">Log out</button>
         </form>
