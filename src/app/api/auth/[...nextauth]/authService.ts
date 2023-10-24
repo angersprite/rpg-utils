@@ -2,9 +2,9 @@ import { createClient } from '@supabase/supabase-js'
 import {} from 'dotenv/config'
 import * as bcrypt from 'bcrypt'
 
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
+const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_SERVICE_KEY!)
 
-export async function registerUser(userName, email, password) {
+export async function registerUser(userName: string, email: string, password: string) {
     let hashedPW = await bcrypt.hash(password, 10)
     const { data: confirmationToken, error } = await supabase
         .rpc('register_user', {
@@ -25,19 +25,19 @@ export async function registerUser(userName, email, password) {
     }
 }
 
-export async function checkCredentials(userName, password) {
+export async function checkCredentials(userName: string, password: string) {
     // get hashed pw from supabase
     let { data, error } = await supabase
         .from('User')
         .select()
         .eq('user_name', userName)
-    if (error || data.length != 1) {
+    if (error || data?.length != 1) {
         return false
     } else {
         const user = data[0]
         const result = await bcrypt.compare(password, user.password)
         if (result) {
-            return { name:user.user_name, email:user.email, image:null }
+            return { id: user.id, name:user.user_name, email:user.email }
         }
         else {
             return null
@@ -45,27 +45,19 @@ export async function checkCredentials(userName, password) {
     }
 }
 
-export async function getUserProfile(userID) {
-    // query supabase for user's info and return it
-    const { data: userProfile, error } = await supabase
-        .from('User')
-        .select('user_name,email')
-    
-    return userProfile
-}
 
-export async function emailExists(email) {
+export async function emailExists(email: string) {
     const { data, error } = await supabase
         .from('User')
         .select('email')
         .eq('email', email)
-    return (data.length > 0)
+    return (data!.length > 0)
 }
 
-export async function userNameExists(userName) {
+export async function userNameExists(userName: string) {
     const { data, error } = await supabase
         .from('User')
         .select('user_name')
         .eq('user_name', userName)
-    return (data.length > 0)
+    return (data!.length > 0)
 }

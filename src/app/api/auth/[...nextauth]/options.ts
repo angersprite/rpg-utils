@@ -17,8 +17,12 @@ export const options: NextAuthOptions = {
                 }
             },
             async authorize(credentials) {
-                var user = await authService.checkCredentials(credentials?.username, credentials?.password)
-                return user
+                var user = await authService.checkCredentials(credentials!.username, credentials!.password)
+                if (user) {
+                    return user
+                } else {
+                    return null
+                }
             }
         })
     ],

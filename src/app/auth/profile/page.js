@@ -14,7 +14,7 @@ export default async function profile() {
             Email: {session.user.email}
         </div>
 
-        <form action="http://localhost:3000/api/auth/signout" method="POST">
+        <form action="./api/auth/signout" method="POST">
             <input type="hidden" name="csrfToken" value={csrf} />
             <button className="big-button" id="submitButton" type="submit">Log out</button>
         </form>

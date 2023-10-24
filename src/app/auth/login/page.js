@@ -6,7 +6,7 @@ export default async function signin() {
 
     return (
         <div className="form-container">
-            <form method="POST" action="http://localhost:3000/api/auth/callback/credentials">
+            <form method="POST" action="./api/auth/callback/credentials">
                 <input type="hidden" name="csrfToken" value={csrf} />
                 <div className="vert-label-field">
                     <label htmlFor="username">Username</label>
