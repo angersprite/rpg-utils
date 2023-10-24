@@ -12,9 +12,10 @@ export default async function NavBar(props) {
     const loginLink = {id:"loginLink", label:"Login", route:"/api/auth/signin"}
     const profileLink = {id:"profileLink", label:"Profile", route:"/auth/profile"}
     
-    await getServerSession()
+    /* await getServerSession()
         .then(session => (session) ? navLinks.push(profileLink)
-            : navLinks.push(loginLink))
+            : navLinks.push(loginLink)) */
+    navLinks.push(loginLink)
     return (
         <header>
             <nav className="nav-bar">

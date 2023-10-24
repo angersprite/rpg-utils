@@ -3,10 +3,10 @@ import { cookies } from 'next/headers'
 
 export default async function signin() {
     const csrf = cookies().get('next-auth.csrf-token')?.value.split('|')[0]
-    const cerdURL = `/api/auth/callback/credentials`
+    
     return (
         <div className="form-container">
-            <form method="POST" action={cerdURL}>
+            <form method="POST" action="/api/auth/callback/credentials">
                 <input type="hidden" name="csrfToken" value={csrf} />
                 <div className="vert-label-field">
                     <label htmlFor="username">Username</label>
