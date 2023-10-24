@@ -18,6 +18,8 @@ export const options: NextAuthOptions = {
             },
             async authorize(credentials) {
                 var user = await authService.checkCredentials(credentials!.username, credentials!.password)
+                console.log(credentials)
+                console.log(user)
                 if (user) {
                     return user
                 } else {
@@ -27,7 +29,7 @@ export const options: NextAuthOptions = {
         })
     ],
     pages: {
-        signIn: '/auth/login',
+       /*  signIn: '/auth/login', */
         signOut: '/auth/logout',
         error: '/auth/error',
     },

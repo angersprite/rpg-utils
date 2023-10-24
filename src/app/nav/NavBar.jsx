@@ -1,7 +1,5 @@
 import './NavBar.css'
-import { getSession } from 'next-auth/react'
 import NavMenu from './NavMenu.jsx'
-import { options } from '../api/auth/[...nextauth]/options'
 import { getServerSession } from 'next-auth/next'
 
 export default async function NavBar(props) {
@@ -13,8 +11,8 @@ export default async function NavBar(props) {
     ]
     const loginLink = {id:"loginLink", label:"Login", route:"/api/auth/signin"}
     const profileLink = {id:"profileLink", label:"Profile", route:"/auth/profile"}
-    const logoutLink = {id:"logoutLink", label:"Logout", route:"/api/auth/signout"}
-    await getServerSession(options)
+    
+    await getServerSession()
         .then(session => (session) ? navLinks.push(profileLink)
             : navLinks.push(loginLink))
     return (

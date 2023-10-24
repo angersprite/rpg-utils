@@ -12,6 +12,9 @@
 /.next/
 /out/
 
+#dev
+/dev-certs
+
 # production
 /build
 
