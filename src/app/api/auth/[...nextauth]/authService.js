@@ -37,7 +37,7 @@ export async function checkCredentials(userName, password) {
         const user = data[0]
         const result = await bcrypt.compare(password, user.password)
         if (result) {
-            return user
+            return { name:user.user_name, email:user.email, image:null }
         }
         else {
             return null

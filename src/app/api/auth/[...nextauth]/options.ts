@@ -17,8 +17,6 @@ export const options: NextAuthOptions = {
                 }
             },
             async authorize(credentials) {
-                // placeholder for user credentials retrieval
-                // replace with supabase User table query
                 var user = await authService.checkCredentials(credentials?.username, credentials?.password)
                 return user
             }
@@ -26,6 +24,8 @@ export const options: NextAuthOptions = {
     ],
     pages: {
         signIn: '/auth/login',
+        signOut: '/auth/logout',
+        error: '/auth/error',
     },
     secret: process.env.NEXT_PUBLIC_SECRET,
 }

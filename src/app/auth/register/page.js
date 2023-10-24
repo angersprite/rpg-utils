@@ -22,11 +22,11 @@ export default function Register(props) {
 
     const isEmailValid = async () => {
         setEmailMessage('')
-        const emailExists = await userService.emailExists(state.email)
         if (!state.email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
             setEmailMessage('Enter a valid email address')
             return false
         } 
+        const emailExists = await userService.emailExists(state.email)
         if (emailExists == 'true') {
             setEmailMessage('This email address has already been registered')
             return false
@@ -35,17 +35,16 @@ export default function Register(props) {
     }
     const isUserNameValid = async () => {
         setUserNameMessage('')
-        const userNameExists = await userService.userNameExists(state.userName)
-        let isValid = true
         if (!(state.userName.length > 2 && state.userName.length < 21)) {
             setUserNameMessage('Username must be between 3 and 20 characters long')
-            isValid = false
+            return false
         } 
+        const userNameExists = await userService.userNameExists(state.userName)
         if (userNameExists == 'true') {
             setUserNameMessage('This username has already been registered')
-            isValid = false
+            return false
         }
-        return isValid
+        return true
     }
     const pwPolicies = [
         { 
@@ -89,11 +88,11 @@ export default function Register(props) {
         let pwCheck = isPasswordValid()
         let pwConfirmCheck = isPasswordConfirmed()
 
-        //console.log(emailCheck, usernameCheck, pwCheck, pwConfirmCheck)
+        console.log(emailCheck, usernameCheck, pwCheck, pwConfirmCheck)
         if (emailCheck && usernameCheck && pwCheck && pwConfirmCheck) {
             let isRegistered = userService.registerUser(state.email, state.userName, state.password)
             if (isRegistered) {
-                router.push('../registered')
+                router.push('./registered')
             }
             else {
                 // handle error + display message
