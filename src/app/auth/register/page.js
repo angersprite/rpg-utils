@@ -125,7 +125,7 @@ export default function Register(props) {
                     <span className="input-helper-text">{ confirmPWMessage }</span>
                 </div>
                 <div>
-                    <button className="big-button" type="button" onClick={tryRegister}>Log In</button>
+                    <button className="big-button" type="button" onClick={tryRegister}>Register</button>
                 </div>
             </form>
         </div>
