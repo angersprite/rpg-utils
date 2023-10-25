@@ -12,15 +12,10 @@
     "@supabase/supabase-js": "^2.38.2",
     "bcrypt": "^5.1.1",
     "dotenv": "^16.3.1",
-    "mkcert": "^3.1.0",
     "next": "^13.5.6",
     "next-auth": "^4.24.3",
-    "nss": "^0.0.1",
-    "openssl": "^2.0.0",
     "react": "^18",
-    "react-dom": "^18",
-    "supabase": "^1.106.1",
-    "vercel": "^32.5.0"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.1",
@@ -30,7 +25,6 @@
     "autoprefixer": "^10",
     "eslint": "^8",
     "eslint-config-next": "13.5.6",
-    "postcss": "^8",
     "tailwindcss": "^3",
     "typescript": "^5"
   }
