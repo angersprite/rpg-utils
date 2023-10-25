@@ -5,7 +5,7 @@ import * as authService from './authService'
 export const options: NextAuthOptions = {
     cookies: {
         sessionToken: {
-          name: `next-auth.session-token`,
+          name: `__Secure-next-auth.session-token`,
           options: {
             httpOnly: true,
             sameSite: 'lax',
@@ -14,7 +14,7 @@ export const options: NextAuthOptions = {
           }
         },
         callbackUrl: {
-          name: `next-auth.callback-url`,
+          name: `__Secure-next-auth.callback-url`,
           options: {
             sameSite: 'lax',
             path: '/',
@@ -22,7 +22,7 @@ export const options: NextAuthOptions = {
           }
         },
         csrfToken: {
-          name: `next-auth.csrf-token`,
+          name: `__Host-next-auth.csrf-token`,
           options: {
             httpOnly: true,
             sameSite: 'lax',

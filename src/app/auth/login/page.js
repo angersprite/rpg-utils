@@ -1,13 +1,17 @@
+"use client"
 import Link from 'next/link'
-import { cookies } from 'next/headers'
+//import { cookies } from 'next/headers'
+import { getCsrfToken } from "next-auth/react"
+//import { options } from "../../api/auth/[...nextauth]/options"
 
 export default async function login() {
-    const csrf = cookies().get('next-auth.csrf-token')?.value.split('|')[0]
-    
+    const csrf = await getCsrfToken()
+
     return (
         <div className="form-container">
             <form method="POST" action="/api/auth/callback/credentials">
                 <input type="hidden" name="csrfToken" value={csrf} />
+                <input name="callbackUrl" type="hidden" defaultValue="/" />
                 <div className="vert-label-field">
                     <label htmlFor="username">Username</label>
                     <input type="text" id="username" name="username" required></input>
