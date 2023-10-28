@@ -4,7 +4,7 @@ import * as authService from './authService'
 
 export const options: NextAuthOptions = {
     cookies: {
-        sessionToken: {
+        /* sessionToken: {
           name: `__Secure-next-auth.session-token`,
           options: {
             httpOnly: true,
@@ -29,7 +29,7 @@ export const options: NextAuthOptions = {
             path: '/',
             secure: true
           }
-        },
+        }, */
     },
     providers: [
         CredentialsProvider({
@@ -55,6 +55,9 @@ export const options: NextAuthOptions = {
             }
         })
     ],
+    session: {
+      strategy: "jwt",
+    },
     pages: {
         signIn: '/auth/login',
         signOut: '/auth/logout',

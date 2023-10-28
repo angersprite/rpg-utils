@@ -53,7 +53,7 @@ export default function NPCBuilder() {
     }
 
     return (
-        <div className="form-container">
+        <div className="card">
             <h2>NPC Generator</h2>
             <div className="npc-form">
                 <form>

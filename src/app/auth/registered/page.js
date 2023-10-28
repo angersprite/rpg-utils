@@ -1,6 +1,6 @@
 export default function Registed() {
     return (
-        <div className="form-container">
+        <div className="card">
             <div>Registration successful!</div>
             <div>Please log in</div>
         </div>

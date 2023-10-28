@@ -6,7 +6,7 @@ export default async function profile() {
     const session = await getServerSession(options)
 
     return (
-    <div className="form-container">
+    <div className="card">
         <div>
             Username: {session.user.name}
         </div>

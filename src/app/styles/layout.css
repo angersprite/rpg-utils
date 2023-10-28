@@ -16,17 +16,17 @@ a {
   text-decoration: none;
 }
 
-.form-container {
+.card {
     padding: 1em;
     border: 0;
     width: 100%;
 }
 
-.form-container div {
+.card div {
   margin-top: 10px;
 }
 
-.form-container h2 {
+.card h2 {
   margin: 0;
 }
 
@@ -59,7 +59,7 @@ button.big-button {
 }
 
 @media screen and (min-width: 601px) {
-  .form-container {
+  .card {
     border: 1px solid grey;
     border-radius: .5em;
     width: 80%;

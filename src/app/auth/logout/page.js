@@ -4,7 +4,7 @@ export default async function logout() {
   
     return (
       
-      <div className="form-container">
+      <div className="card">
         <LogoutButton></LogoutButton>
       </div>
     )

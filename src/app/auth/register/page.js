@@ -100,7 +100,7 @@ export default function Register(props) {
     }
 
     return (
-        <div className="form-container">
+        <div className="card">
             <form>
                 <div className="vert-label-field">
                     <label htmlFor="userName">Email</label>

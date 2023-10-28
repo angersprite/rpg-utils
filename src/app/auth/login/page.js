@@ -8,7 +8,7 @@ export default async function login() {
     const csrf = await getCsrfToken()
 
     return (
-        <div className="form-container">
+        <div className="card">
             <form method="POST" action="/api/auth/callback/credentials">
                 <input type="hidden" name="csrfToken" value={csrf} />
                 <input name="callbackUrl" type="hidden" defaultValue="/" />
