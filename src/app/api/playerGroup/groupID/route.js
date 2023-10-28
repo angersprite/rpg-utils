@@ -1,4 +1,4 @@
-import { getPlayerGroup } from '../PlayerGroupService'
+import { getPlayerGroup } from '../PlayerGroupService.ts'
 import { NextResponse } from 'next/server'
 
 export async function GET (request, context){

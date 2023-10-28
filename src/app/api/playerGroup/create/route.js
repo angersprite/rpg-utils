@@ -1,4 +1,4 @@
-import { createGroup } from '../PlayerGroupService'
+import { createGroup } from '../PlayerGroupService.ts'
 import { NextResponse } from 'next/server'
 
 export async function POST(req,res){
