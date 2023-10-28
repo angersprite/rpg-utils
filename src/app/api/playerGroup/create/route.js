@@ -10,13 +10,7 @@ export async function POST(req,res){
     const groupID = await createGroup(groupName, userName)
     callBackURL = callBackURL.replace(':ID', groupID)
     
-    return {
-        redirect: {
-          permanent: false,
-          destination: "/"
-        }
-      }
-    //return NextResponse.redirect(callBackURL);
+    return NextResponse.redirect(callBackURL);
     // redirect to localhost is broken?
     // find if possible to fix
     // or find alternate way to redirect
