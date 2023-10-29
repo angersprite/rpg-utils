@@ -17,8 +17,7 @@ export async function registerUser(userName: string, email: string, password: st
     }
     else {
         // send confirmation email
-        /* console.log(data)
-        const mailSubject = 'RPG Utilities Registration'
+        /* const mailSubject = 'RPG Utilities Registration'
         const mailBody = `To Activate your account please visit this link: https://goonr-9cn.pages.dev/confirmEmail/${confirmationToken}`
         sendEmail(email, mailSubject, mailBody) */
         return true

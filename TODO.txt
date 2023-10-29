@@ -1,6 +1,11 @@
 reorganize service files into a different folder- out of api structure
 move session to a context?
 
+find a free/super cheap service for sending emails
+add emails for registration confirmation
+            player invite acceptance
+
+
 player groups
     actions>    leave group
                 invite player (sends email)

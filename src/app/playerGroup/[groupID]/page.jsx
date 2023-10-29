@@ -1,4 +1,4 @@
-import { getPlayerGroup } from '@api/playerGroup/PlayerGroupService'
+import { getPlayerGroup } from '@/app/api/playerGroup/PlayerGroupService'
 
 export default async function playerGroup(props) {
     const groupID = props.params.groupID
