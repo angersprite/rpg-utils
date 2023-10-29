@@ -6,7 +6,7 @@ export default function CreateGroupForm(props) {
     const router = useRouter()
     const userName = props.session.user.name
     let [groupName, setGroupName] = useState('')
-    let groupMembers = [{ userName: userName, memberType: 1 }]
+    let groupMembers = [{ userName: userName, memberType: 1, acceptedInvite: true }]
 
     const createGroup = async () => {
         const postBody = JSON.stringify({

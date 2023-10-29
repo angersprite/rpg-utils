@@ -3,7 +3,7 @@ import {} from 'dotenv/config'
 
 const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_SERVICE_KEY!)
 
-export async function createGroup(groupName: string, userName: string, groupMembers: [{userName: string, memberType: number}]) {
+export async function createGroup(groupName: string, userName: string, groupMembers: [{ userName: string, memberType: number, acceptedInvite: boolean }]) {
     const { data: user, error: userError } = await supabase 
         .from('User')
         .select('id')
@@ -21,7 +21,7 @@ export async function createGroup(groupName: string, userName: string, groupMemb
     return groupID
 }
 
-export async function addPlayersToGroup(groupID: number, groupMembers: [{ userName: string, memberType: number }] ) {
+export async function addPlayersToGroup(groupID: number, groupMembers: [{ userName: string, memberType: number, acceptedInvite: boolean }] ) {
     // could improve this with a supabase side function
     // see if you can pass the whole members array?
     groupMembers.map(async member => {
@@ -32,7 +32,7 @@ export async function addPlayersToGroup(groupID: number, groupMembers: [{ userNa
         const userID = user![0].id
         await supabase
             .from('PlayerGroupMember')
-            .insert([{ group_id: groupID, user_id: userID }])
+            .insert([{ group_id: groupID, user_id: userID, accepted_invite: member.acceptedInvite }])
     })
 }
 
