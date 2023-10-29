@@ -5,9 +5,6 @@ body {
 }
 
 main {
-  display: flex;
-  justify-content: center;
-  margin: auto;
   padding: 10px 0 0 0;
 }
 
@@ -18,8 +15,9 @@ a {
 
 .card {
     padding: 1em;
-    border: 0;
-    width: 100%;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    width: auto
 }
 
 .card div {
@@ -64,5 +62,11 @@ button.big-button {
     border-radius: .5em;
     width: 80%;
     max-width: 500px;
+  }
+
+  main {
+    display: flex;
+    justify-content: center;
+    margin: auto;
   }
 }

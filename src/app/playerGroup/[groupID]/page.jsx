@@ -1,5 +1,12 @@
-export default function playerGroup(props) {
+import { getPlayerGroup } from '../../api/playerGroup/PlayerGroupService'
+
+export default async function playerGroup(props) {
+    const groupID = props.params.groupID
+    const groupDetails = await getPlayerGroup(groupID)
+
     return (
-        <div>Player Group</div>
+        <div className="card">
+            <h2>{groupDetails.name}</h2>
+        </div>
     )
 }
