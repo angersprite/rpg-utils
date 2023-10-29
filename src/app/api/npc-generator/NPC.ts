@@ -3,7 +3,7 @@ export default class NPC {
     race = ''
     firstName = ''
     lastName = ''
-    hitPoints = ''
+    hitPoints = 0
     armorType = ''
     armorClass = ''
     weapon = ''

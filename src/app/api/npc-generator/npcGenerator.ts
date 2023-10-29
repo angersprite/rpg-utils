@@ -1,7 +1,7 @@
-import * as npcService from './npcService.js'
+import * as npcService from './npcService'
 import NPC from './NPC.js'
 
-export default async function generateNPC(classID, raceID) {
+export default async function generateNPC(classID: number, raceID: number) {
     let npc = new NPC
 
     await npcService.getClass(classID)

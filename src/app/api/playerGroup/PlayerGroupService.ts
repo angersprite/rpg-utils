@@ -36,6 +36,10 @@ export async function addPlayersToGroup(groupID: number, groupMembers: [{ userNa
     })
 }
 
+export async function acceptGroupInvite(groupID: number, userName: string) {
+    
+}
+
 export async function getPlayerGroup(groupID: number) {
     const { data, error } = await supabase
         .from('PlayerGroup')

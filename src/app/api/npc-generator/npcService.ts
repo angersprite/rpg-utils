@@ -1,9 +1,9 @@
 import { createClient } from '@supabase/supabase-js'
 import {} from 'dotenv/config'
 
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY)
+const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_ANON_KEY!)
 
-export async function getRace(raceID) {
+export async function getRace(raceID?: number) {
     if (raceID == -1) {
         let { data: Race, error } = await supabase
             .rpc('random_race')
@@ -24,7 +24,7 @@ export async function getRace(raceID) {
     }
 }
 
-export async function getClass(classID) {
+export async function getClass(classID?: number) {
     if (classID == -1) {
         let { data: Class, error } = await supabase
             .rpc('random_class')
@@ -57,31 +57,31 @@ export async function getLastName() {
     return LastName
 }
 
-export async function getWeapon(classID) {
+export async function getWeapon(classID: number) {
     let { data: Weapon, error } = await supabase
         .rpc('random_class_weapon', { class_id: classID })
     return Weapon
 }
 
-export async function getArmor(classID) {
+export async function getArmor(classID: number) {
     let { data: Armor, error } = await supabase
         .rpc('random_class_armor', { class_id: classID })
     return Armor
 }
 
-export async function getDescriptors(descCount) {
+export async function getDescriptors(descCount: number) {
     let { data, error } = await supabase
         .rpc('random_descriptor', { count: descCount })
     return data
 }
 
-export async function getSkills(classID, descCount) {
+export async function getSkills(classID: number, descCount: number) {
     let { data, error } = await supabase
         .rpc('random_skill', { class_id: classID, count: descCount })
     return data
 }
 
-export async function getItems(itemCount) {
+export async function getItems(itemCount: number) {
     let { data, error } = await supabase
         .rpc('random_item', { count: itemCount })
     return data

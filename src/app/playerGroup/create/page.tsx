@@ -1,5 +1,5 @@
 import { getServerSession } from 'next-auth/next'
-import { authOptions } from "@/api/auth/[...nextauth]/options"
+import { authOptions } from "@/app/api/auth/[...nextauth]/options"
 import CreateGroupForm from './CreateGroupForm'
 
 export default async function GroupCreation() {
