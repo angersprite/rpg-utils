@@ -1,8 +1,6 @@
 "use client"
 import Link from 'next/link'
-//import { cookies } from 'next/headers'
 import { getCsrfToken } from "next-auth/react"
-//import { options } from "../../api/auth/[...nextauth]/options"
 
 export default async function login() {
     const csrf = await getCsrfToken()

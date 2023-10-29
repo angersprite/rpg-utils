@@ -51,6 +51,14 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  background-color: rgb(99, 65, 85);
+}
+
+button:active {
+  background-color: rgb(117, 61, 83);
+}
+
 button.big-button {
   padding: 1em;
   width: 100%;

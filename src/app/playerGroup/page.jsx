@@ -1,10 +1,10 @@
 import { getServerSession } from 'next-auth/next'
-import { options } from "../api/auth/[...nextauth]/options"
-import { getUserGroups } from "../api/playerGroup/PlayerGroupService"
+import { authOptions } from "@/app/api/auth/[...nextauth]/options"
+import { getUserGroups } from "@/app/api/playerGroup/PlayerGroupService"
 import GroupCard from "./groupCard"
 
 export default async function GroupsDashboard(props) {
-    const session = await getServerSession(options)
+    const session = await getServerSession(authOptions)
     // get all groups this user is a part of
     const playerGroups = await getUserGroups(session.user.name)
     return (

@@ -1,9 +1,9 @@
 import { getServerSession } from "next-auth/next"
-import { options } from "../../api/auth/[...nextauth]/options"
+import { authOptions } from "@/app/api/auth/[...nextauth]/options"
 import LogoutButton from '../logout/logoutButton'
 
 export default async function profile() {
-    const session = await getServerSession(options)
+    const session = await getServerSession(authOptions)
 
     return (
     <div className="card">

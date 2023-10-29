@@ -2,8 +2,8 @@ import type { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import * as authService from './authService'
 
-export const options: NextAuthOptions = {
-    cookies: {
+export const authOptions: NextAuthOptions = {
+    /* cookies: {
          sessionToken: {
           name: `__Secure-next-auth.session-token`,
           options: {
@@ -30,7 +30,7 @@ export const options: NextAuthOptions = {
             secure: true
           }
         },
-    },
+    }, */
     providers: [
         CredentialsProvider({
             name: "Credentials",

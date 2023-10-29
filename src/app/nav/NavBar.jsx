@@ -1,7 +1,7 @@
 import './NavBar.css'
 import NavMenu from './NavMenu.jsx'
 import { getServerSession } from 'next-auth/next'
-import { options } from "../api/auth/[...nextauth]/options"
+import { authOptions } from "../api/auth/[...nextauth]/options"
 
 export default async function NavBar(props) {
     // add check if session exists, conditional display of login or profile link
@@ -13,7 +13,7 @@ export default async function NavBar(props) {
     const logoutLink = {id:"logoutLink", label:"Logout", route:"/api/auth/signout"}
     const profileLink = {id:"profileLink", label:"Profile", route:"/auth/profile"}
     
-    await getServerSession(options)
+    await getServerSession(authOptions)
         .then(session => session ? (
             navLinks.push(profileLink)
         ) : (
