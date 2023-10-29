@@ -7,6 +7,7 @@ export default async function playerGroup(props) {
     return (
         <div className="card">
             <h2>{groupDetails.name}</h2>
+            <div></div>
         </div>
     )
 }
