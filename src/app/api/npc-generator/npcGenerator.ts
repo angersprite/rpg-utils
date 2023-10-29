@@ -1,5 +1,5 @@
 import * as npcService from './npcService'
-import NPC from './NPC.js'
+import NPC from './NPC'
 
 export default async function generateNPC(classID: number, raceID: number) {
     let npc = new NPC
