@@ -5,9 +5,8 @@ export default class UserService {
             userName: userName,
             password: password
         })
-        const response = this.postAPI('auth/register', requestBody)
+        const response = await this.postAPI('auth/register', requestBody)
             .then((response) => response.text())
-        console.log(response)
         return response
     }
 
@@ -24,7 +23,7 @@ export default class UserService {
     }
 
     private async postAPI(endpoint: string, postBody: string) {
-        const response = await fetch(`${process.env.BASE_URL}/${endpoint}`, {
+        const response = await fetch(`/api/${endpoint}`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -38,6 +37,7 @@ export default class UserService {
     }
 
     private async getAPI(endpoint: string) {
-        return fetch(`${process.env.BASE_URL}/${endpoint}`, {mode: 'cors'})
+        const response = await fetch(`/api/${endpoint}`, {mode: 'cors'})
+        return response
     }
 }

@@ -11,7 +11,6 @@ export async function registerUser(userName: string, email: string, password: st
         .rpc('register_user', {
             user_name: userName, email: email, hashed_password: hashedPW, 
         })
-    console.log(confirmationToken)
     if (error) {
         console.log(error)
         return false

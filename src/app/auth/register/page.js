@@ -89,9 +89,9 @@ export default function Register(props) {
         let pwConfirmCheck = isPasswordConfirmed()
         
         if (emailCheck && usernameCheck && pwCheck && pwConfirmCheck) {
-            let isRegistered = userService.registerUser(state.email, state.userName, state.password)
+            let isRegistered = await userService.registerUser(state.email, state.userName, state.password)
             if (isRegistered) {
-                router.push('./registered')
+                //router.push('./registered')
             }
             else {
                 // handle error + display message

@@ -1,4 +1,4 @@
-import { validateEmailToken } from '@/api/auth/authService'
+import { validateEmailToken } from '@/app/api/auth/authService'
 
 export default async function EmailConfirmation(props) {
     const confirmationToken = props.params.token

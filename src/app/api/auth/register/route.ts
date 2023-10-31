@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { registerUser } from '../authService'
 
-export default async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest, res: NextResponse) {
     const data = await req.json()
     const userName = data.userName
     const email = data.email
