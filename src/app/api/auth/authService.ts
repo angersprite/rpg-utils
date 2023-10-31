@@ -76,7 +76,7 @@ export async function validateEmailToken(token: string) {
         .from('User')
         .select('id')
         .eq('verify_email_token', token)
-    if (user) {
+    if (user && user.length > 0) {
         const userID = user![0].id
         const { data, error } = await supabase
             .from('User')
