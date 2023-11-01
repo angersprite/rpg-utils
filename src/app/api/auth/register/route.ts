@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { registerUser } from '../authService'
+import { registerUser } from '@/app/services/authService'
 
 export async function POST(req: NextRequest, res: NextResponse) {
     const data = await req.json()

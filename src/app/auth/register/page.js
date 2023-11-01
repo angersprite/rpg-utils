@@ -1,6 +1,6 @@
 "use client"
 import { useState}  from 'react'
-import UserService from '../UserService'
+import UserService from '@/app/services/UserService'
 import { useRouter } from 'next/navigation'
 
 export default function Register(props) {

@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import {} from 'dotenv/config'
 import * as bcrypt from 'bcrypt'
-import { sendEmail } from '../EmailService'
+import { sendEmail } from './EmailService'
 
 const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_SERVICE_KEY!)
 
@@ -47,7 +47,7 @@ export async function checkCredentials(userName: string, password: string) {
         const user = data[0]
         const result = await bcrypt.compare(password, user.password)
         if (result) {
-            return { id: user.id, name:user.user_name, email:user.email }
+            return { id: user.id, name:user.user_name, email:user.email, verified: user.email_verified }
         }
         else {
             return null

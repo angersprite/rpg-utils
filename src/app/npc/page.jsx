@@ -1,7 +1,6 @@
 "use client"
 
 import GoonrService from './GoonrService.ts'
-/* import { useState } from 'react'; */
 import { useState, useEffect } from 'react';
 import NPCDisplay from './NPCDisplay.jsx'
 import NPC from './NPC.ts'

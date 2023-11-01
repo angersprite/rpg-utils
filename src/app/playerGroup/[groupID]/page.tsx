@@ -1,4 +1,5 @@
-import { getPlayerGroup } from '@/app/api/playerGroup/PlayerGroupService'
+import { getPlayerGroup } from '@/app/services/PlayerGroupService'
+import UserList from '../UserList'
 
 export interface Props {
     params: {
@@ -13,6 +14,7 @@ export default async function playerGroup(props: Props) {
     return (
         <div className="card">
             <h2>{groupDetails?.name}</h2>
+            <UserList groupID={props.params.groupID}></UserList>
             <div></div>
         </div>
     )
