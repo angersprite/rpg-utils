@@ -1,5 +1,5 @@
 "use client"
-import UserService from '../UserService'
+import UserService from '@/app/services/UserService'
 
 export default function resendConfirm() {
     return (
