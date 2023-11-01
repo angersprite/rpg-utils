@@ -6,7 +6,15 @@ export default function UserInvite(props) {
     let [memberType, setMemberType] = useState('')
 
     const inviteUser = async () => {
-        // post fetch call to invite api
+        const postBody = JSON.stringify({ groupID: props.groupID, userName: invitee, memberType: memberType })
+        const res = await fetch(`/api/playerGroup/inviteUser`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: postBody
+        })
         // respond if user invitation went ok
         // respond if usename not found
     }

@@ -13,7 +13,7 @@ export default async function UserList(props) {
             <UserInvite groupID={props.groupID}></UserInvite>
             {
                 groupMembers.map(member => {
-                    return (<li key={member.user_id}>{member.User.user_name}</li>)
+                    return (<li key={member.user_id}>{member.User.user_name} - {member.GroupMemberType.name}</li>)
                 })
             }
         </ul>

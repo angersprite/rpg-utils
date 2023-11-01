@@ -60,9 +60,8 @@ export async function getUserGroups(userName: string) {
 export async function getGroupMembers(groupID: number) {
     const { data, error } = await supabase
         .from('PlayerGroupMember')
-        .select('user_id,User(user_name)')
+        .select('user_id,User(user_name),GroupMemberType(name)')
         .eq('group_id', groupID)
-    
     return data
 }
 
@@ -71,10 +70,10 @@ export async function inviteUser(groupID: number, userName: string, memberType: 
     const user = { userName: userName, memberType: memberType, acceptedInvite: false }
     addPlayersToGroup(groupID, [user])
     // send email to user inviting them to group with link to accept invite
-    
+    /* const mailTo = ''
     const subject = ''
     const body = ''
-    sendEmail(mailTo, subject, body)
+    sendEmail(mailTo, subject, body) */
 }
 
 export async function getMemberTypes() {

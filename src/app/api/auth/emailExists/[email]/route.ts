@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { emailExists } from '@/app/services/authService'
+import { emailExists } from '@/app/services/AuthService'
 
 export async function GET(req: NextRequest, { params }: { params: { email: string } }) {
     const exists = await emailExists(params.email)
