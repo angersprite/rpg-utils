@@ -32,7 +32,7 @@ export async function sendRegistrationEmail(email: string, confirmationToken?: s
 
     const mailSubject = 'RPG Utilities Registration'
     const mailBody = `To Activate your account please visit this link: ${process.env.BASE_URL}/auth/confirmEmail/${confirmationToken}`
-    sendEmail(email, mailSubject, mailBody)
+    await sendEmail(email, mailSubject, mailBody)
 }
 
 export async function checkCredentials(userName: string, password: string) {

@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport({
   });
 const emailFrom = process.env.MAIL_FROM
 
-export function sendEmail(mailTo: string, subject: string, body: string) {
+export async function sendEmail(mailTo: string, subject: string, body: string) {
     const mailOptions = {
         from: `RPG Utilities <${emailFrom}>`,
         to: mailTo,
@@ -18,11 +18,15 @@ export function sendEmail(mailTo: string, subject: string, body: string) {
         text: body
     };
 
-    transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
+    await new Promise((resolve, reject) => {
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error)
+                reject(error)
+            } else {
+                console.log('Email sent: ' + info.response)
+                resolve(info)
+            }
+        });
+    })
 }

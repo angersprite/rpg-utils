@@ -73,7 +73,7 @@ export async function inviteUser(groupID: number, userName: string, memberType: 
     /* const mailTo = ''
     const subject = ''
     const body = ''
-    sendEmail(mailTo, subject, body) */
+    await sendEmail(mailTo, subject, body) */
 }
 
 export async function getMemberTypes() {
