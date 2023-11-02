@@ -1,6 +1,7 @@
 import type { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import * as authService from '@/app/services/AuthService'
+import 'next-auth'
 
 export const authOptions: NextAuthOptions = {
     providers: [
@@ -17,7 +18,7 @@ export const authOptions: NextAuthOptions = {
                 }
             },
             async authorize(credentials) {
-                var user = await authService.checkCredentials(credentials!.username, credentials!.password)
+                const user = await authService.checkCredentials(credentials!.username, credentials!.password)
                 
                 if (user) {
                     return user
@@ -27,12 +28,24 @@ export const authOptions: NextAuthOptions = {
             }
         })
     ],
+    callbacks: {
+        async jwt({ token, user, account, profile }) {
+            if (user) {
+                token.verified = user.verified
+            }
+            return token
+        },
+        async session({session, token}) {
+            session.user.verified = token.verified
+            return session
+        }
+    },
     session: {
       strategy: "jwt",
     },
     pages: {
         signIn: '/auth/login',
-        signOut: '/auth/logout',
+        //signOut: '/auth/logout',
         error: '/auth/error',
     },
     secret: process.env.NEXT_PUBLIC_SECRET,
