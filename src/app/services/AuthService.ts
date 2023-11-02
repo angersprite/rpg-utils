@@ -16,7 +16,7 @@ export async function registerUser(userName: string, email: string, password: st
         return false
     }
     else {
-        sendRegistrationEmail(email, confirmationToken)
+        await sendRegistrationEmail(email, confirmationToken)
         return true
     }
 }
