@@ -27,12 +27,13 @@ export async function sendRegistrationEmail(email: string, confirmationToken?: s
             .from('User')
             .select('verify_email_token')
             .eq('email', email)
-        const token = data![0].verify_email_token
+        confirmationToken = data![0].verify_email_token
     }
 
     const mailSubject = 'RPG Utilities Registration'
     const mailBody = `To Activate your account please visit this link: ${process.env.BASE_URL}/auth/confirmEmail/${confirmationToken}`
     await sendEmail(email, mailSubject, mailBody)
+    return 'email sent'
 }
 
 export async function checkCredentials(userName: string, password: string) {
