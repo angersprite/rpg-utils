@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react'
 
-export default function resendConfirm() {
+export default function ResendConfirm() {
     let [email, setEmail] = useState('')
     let [emailMessage, setEmailMessage] = useState('')
     const sendEmail = async () => {
