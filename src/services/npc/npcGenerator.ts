@@ -1,5 +1,5 @@
 import * as npcService from './npcService'
-import NPC from '../../api/npc-generator/NPC'
+import NPC from '@/app/api/npc-generator/NPC'
 
 export default async function generateNPC(classID: number, raceID: number) {
     let npc = new NPC
