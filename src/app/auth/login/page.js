@@ -23,8 +23,9 @@ export default async function login() {
                 </div>
             </form>
             
-            <div>
+            <div className="spacerFlex">
                 <Link href={`/auth/register`}>Register</Link>
+                <Link href={`/auth/password/reset`}>Forgot your password?</Link>
             </div>
         </div>
     )

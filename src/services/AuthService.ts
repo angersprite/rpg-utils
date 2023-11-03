@@ -2,11 +2,12 @@ import { createClient } from '@supabase/supabase-js'
 import {} from 'dotenv/config'
 import * as bcrypt from 'bcrypt'
 import { sendEmail } from './EmailService'
+import { v4 as uuidv4 } from 'uuid'
 
 const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_SERVICE_KEY!)
 
 export async function registerUser(userName: string, email: string, password: string) {
-    let hashedPW = await bcrypt.hash(password, 10)
+    let hashedPW = await hashPassword(password)
     const { data: confirmationToken, error } = await supabase
         .rpc('register_user', {
             user_name: userName, email: email, hashed_password: hashedPW, 
@@ -19,6 +20,11 @@ export async function registerUser(userName: string, email: string, password: st
         await sendRegistrationEmail(email, confirmationToken)
         return true
     }
+}
+
+export async function hashPassword(password: string) {
+    const hashedPassword = await bcrypt.hash(password, 10)
+    return hashedPassword
 }
 
 export async function sendRegistrationEmail(email: string, confirmationToken?: string) {
@@ -87,5 +93,53 @@ export async function validateEmailToken(token: string) {
         return true
     } else {
         return false
+    }
+}
+
+export async function sendPasswordResetEmail(email: string) {
+    const resetToken = uuidv4()
+    const { data, error } = await supabase
+        .from('User')
+        .update({ reset_pw_token: resetToken, reset_token_crtn_tmst: (new Date()).toLocaleString() })
+        .eq('email', email)
+    const subject = 'Reset password link'
+    const resetLink = `${process.env.BASE_URL}/auth/password/update/${resetToken}`
+    const body = `To reset your password please visit this link- ${resetLink}. This link will expire in one hour.`
+    sendEmail(email, subject, body) 
+
+    return 'Email sent'
+}
+
+export async function isResetTokenValid(resetToken: string) {
+    const { data, error } = await supabase
+        .from('User')
+        .select('reset_token_crtn_tmst')
+        .eq('reset_pw_token', resetToken)
+    if (error || data.length == 0) {
+        return false
+    } else {
+        const tokenTimestamp = new Date(data![0].reset_token_crtn_tmst)
+        const currentTimestamp = new Date()
+        const tokenAgeMinutes = (currentTimestamp.getTime() - tokenTimestamp.getTime()) / 1000 / 60
+        if (tokenAgeMinutes < 60) {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
+export async function updatePassword(resetToken: string, password: string) {
+    const hashedPassword = await hashPassword(password)
+    const { data, error } = await supabase
+        .from('User')
+        .update({ password: hashedPassword, reset_pw_token: null, reset_token_crtn_tmst: null })
+        .eq('reset_pw_token', resetToken)
+
+    if (error) {
+        console.log(error)
+        return 'error'
+    } else {
+        return 'Password updated'
     }
 }

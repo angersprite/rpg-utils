@@ -1,4 +1,4 @@
-import generateNPC from '../npcGenerator'
+import generateNPC from '@/services/npc/npcGenerator'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST (request: NextRequest){

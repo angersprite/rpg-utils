@@ -1,4 +1,4 @@
-import { getPlayerGroup } from '@/app/services/PlayerGroupService'
+import { getPlayerGroup } from '@/services/PlayerGroupService'
 import UserList from '../UserList'
 
 export interface Props {

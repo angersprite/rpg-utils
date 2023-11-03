@@ -1,10 +1,10 @@
 "use client"
 
-import GoonrService from './GoonrService.ts'
+import GoonrService from '@/services/npc/GoonrService.ts'
 import { useState, useEffect } from 'react';
 import NPCDisplay from './NPCDisplay.jsx'
-import NPC from './NPC.ts'
-import './Goonr.css'
+import NPC from '@/services/npc/NPC.ts'
+import '@/styles/Goonr.css'
 
 const goonrService = new GoonrService
 

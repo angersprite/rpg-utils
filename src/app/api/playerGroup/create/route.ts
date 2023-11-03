@@ -1,4 +1,4 @@
-import { createGroup } from '@/app/services/PlayerGroupService'
+import { createGroup } from '@/services/PlayerGroupService'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(req: NextRequest,res: Response){

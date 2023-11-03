@@ -1,4 +1,4 @@
-import './NavBar.css'
+import '@/styles/NavBar.css'
 import NavMenu from './NavMenu.jsx'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from "../api/auth/[...nextauth]/options"

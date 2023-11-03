@@ -1,5 +1,5 @@
-import { inviteUser } from '@/app/services/PlayerGroupService'
-import { userNameExists } from '@/app/services/AuthService'
+import { inviteUser } from '@/services/PlayerGroupService'
+import { userNameExists } from '@/services/AuthService'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(req: NextRequest) {

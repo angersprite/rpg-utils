@@ -1,6 +1,6 @@
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from "@/app/api/auth/[...nextauth]/options"
-import { getUserGroups } from "@/app/services/PlayerGroupService"
+import { getUserGroups } from "@/services/PlayerGroupService"
 import GroupCard from "./groupCard"
 
 export default async function GroupsDashboard(props) {

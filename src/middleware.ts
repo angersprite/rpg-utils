@@ -10,7 +10,7 @@ export default async function middleware(req: NextRequest) {
         req,
         secret: process.env.NEXTAUTH_SECRET,
         raw: true
-    })
+    });
     const isProtected = config.matcher.find(u => { return u == path })
     
     if (!session && isProtected) {

@@ -1,4 +1,4 @@
-import NPC from './NPC.ts'
+import NPC from '@/services/npc/NPC.ts'
 
 export default function NPCDisplay(props) {
     let skillList = <ul></ul>

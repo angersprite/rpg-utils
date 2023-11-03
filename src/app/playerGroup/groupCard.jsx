@@ -1,4 +1,4 @@
-import "./playerGroup.css"
+import "@/styles/playerGroup.css"
 
 export default function GroupCard(props) {
     const groupURL = `/playerGroup/${props.groupID}`

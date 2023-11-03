@@ -1,4 +1,4 @@
-import { getGroupMembers } from '@/app/services/PlayerGroupService'
+import { getGroupMembers } from '@/services/PlayerGroupService'
 import UserInvite from './UserInvite'
 
 export default async function UserList(props) {

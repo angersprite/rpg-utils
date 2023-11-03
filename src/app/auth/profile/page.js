@@ -4,7 +4,6 @@ import LogoutButton from '../logout/logoutButton'
 
 export default async function profile() {
     const session = await getServerSession(authOptions)
-    console.log(session)
 
     return (
         <div className="card">
